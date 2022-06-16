@@ -1,16 +1,10 @@
-"use strict";
-
-module.exports.handler = async (event, context) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: "Go Serverless v2.0! Your executed! Test hello",
-        randomNum: Math.floor(Math.random()*100).toString(),
-        input: event,
-      },
-      null,
-      2
-    ),
-  };
-};
+export default function handler(req, res) {
+  res.status(200).send({ 
+      query: req.query, 
+      method: req.method,
+      cookies: req.cookies, 
+      body: req.body, 
+      headers: req.headers,
+      randomNum: Math.floor((Math.random()*100) + 1)
+  })
+};  
